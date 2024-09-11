@@ -65,7 +65,7 @@ App.vue  >>>
     <Child v-bind:name="users[0].name" />
     <!-- If you want to loop through all users -->
     <div v-for="(user, index) in users" :key="index">
-      <Child v-bind:name="user.name" />
+      <Child v-bind:name="user" />
     </div>
   </div>
 </template>
@@ -81,8 +81,8 @@ export default {
   data() {
     return {
       users: [
-        { name: 'Anil' },
-        { name: 'Mukesh' },
+        { name: 'Anil' ,email:"anil@gmail.com" },
+        { name: 'Mukesh' , email:"mukesh@gmail.com"},
       ],
     };
   },
@@ -100,13 +100,12 @@ export default {
 }
 </style>
 
-
-
 Child.vue  >>>
 
 <template>
-    <div>
-      <p>{{ name }}</p>
+    <div> 
+	<p>{{ name.name }}</p>
+      	<p>{{ name.email }}</p>
     </div>
   </template>
   
@@ -119,4 +118,11 @@ Child.vue  >>>
 
 
   
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Send Props child to parent   >>>>>
+
+
+
 

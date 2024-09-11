@@ -1,21 +1,32 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <Home /> -->
-     <DataBind />
+    <h2>Props in Vue.js</h2>
+    <!-- Bind the first user's name to the Child component -->
+    <Child v-bind:name="users[0].name" />
+    <!-- If you want to loop through all users -->
+    <div v-for="(user, index) in users" :key="index">
+      <Child v-bind:name="user.name" />
+    </div>
   </div>
 </template>
 
 <script>
-// import Home from './components/Home.vue'
-import DataBind from './components/Data-binding/DataBind.vue'
+import Child from './components/Child.vue';
+
 export default {
   name: 'App',
   components: {
-    // Home,
-    DataBind
-  }
-}
+    Child,
+  },
+  data() {
+    return {
+      users: [
+        { name: 'Anil' },
+        { name: 'Mukesh' },
+      ],
+    };
+  },
+};
 </script>
 
 <style>

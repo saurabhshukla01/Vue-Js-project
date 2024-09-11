@@ -1,0 +1,329 @@
+Start Project Setup & All code in Vue.js >>>
+
+#  Prerequisites:
+Node.js installed
+Vue CLI installed (npm install -g @vue/cli)
+
+1. Create a Vue.js Project:
+First, create a new Vue.js project using the Vue CLI:
+
+# vue create dummy-api-vue
+
+after create project in Vue then please go to dir and run server   >>>
+
+# cd dummy-api-vue
+
+for api call package in Vue.js   >>>
+
+# npm install axios
+
+after update code >>
+
+HelloWorld.vue   >>>>>>>>>>>>>>>>>>
+
+
+<template>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <button @click="fetchData">Fetch Data</button>
+    <div v-if="loading">Loading...</div>
+    <div v-else-if="error">{{ error }}</div>
+    <div v-else-if="data">
+      <h2>Data from API:</h2>
+      <pre>{{ data }}</pre>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String
+  },
+  data() {
+    return {
+      data: null,
+      loading: false,
+      error: null
+    };
+  },
+  methods: {
+    async fetchData() {
+      this.loading = true;
+      this.error = null;
+
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
+        this.data = response.data;
+      } catch (err) {
+        this.error = 'Error fetching data';
+      } finally {
+        this.loading = false;
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+h1 {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 20px;
+}
+
+button {
+  margin: 10px 0;
+}
+</style>
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+run server application >>>
+
+
+# npm run serve
+
+
+when i need to route for another components then install >>>>
+
+Install Vue Router:
+
+# npm install vue-router
+
+Set Up Vue Router:
+
+# Let’s define two pages: one for the list of items (ItemList.vue) and another for viewing the details of a specific item (ItemDetail.vue).
+
+router/index.js:
+Create a Vue Router setup to handle navigation.
+
+index.js file >>>>   for up to Vue version 3
+
+import { createRouter, createWebHistory } from 'vue-router'; // Vue 3 Router imports
+import ItemList from '../components/ItemList.vue';
+import ItemDetail from '../components/ItemDetail.vue';
+
+const routes = [
+  { path: '/', name: 'ItemList', component: ItemList },
+  { path: '/item/:id', name: 'ItemDetail', component: ItemDetail },
+];
+
+// Use createRouter and createWebHistory (for history mode)
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+update code in main.js file  >>>>>
+
+
+import { createApp } from 'vue'; // Vue 3 uses createApp
+import App from './App.vue';
+import router from './router'; // Make sure router is properly set up
+
+// Create and mount the app instance
+const app = createApp(App);
+
+// Use the router
+app.use(router);
+
+// Mount the app
+app.mount('#app');
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+App.Vue  file update   >>>>>
+
+
+<template>
+  <div id="app">
+    <router-view></router-view> <!-- This renders the current route's component -->
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App'
+};
+</script>
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Add File code >>>
+
+ItemDetails.Vue  
+
+<template>
+  <div class="item-detail">
+    <h1>Item Details</h1>
+    
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+    
+    <div v-if="item">
+      <p><strong>ID:</strong> {{ item.id }}</p>
+      <p><strong>Title:</strong> {{ item.title }}</p>
+      <p><strong>Body:</strong> {{ item.body }}</p>
+      <button @click="goBack">Go Back</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      item: null,
+      loading: false,
+      error: null
+    };
+  },
+  mounted() {
+    this.fetchItemDetails();
+  },
+  methods: {
+    async fetchItemDetails() {
+      const id = this.$route.params.id;
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+        this.item = response.data;
+      } catch (err) {
+        this.error = 'Error fetching item details';
+      } finally {
+        this.loading = false;
+      }
+    },
+    goBack() {
+      this.$router.push({ name: 'ItemList' });
+    }
+  }
+};
+</script>
+
+<style scoped>
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+</style>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ItemList.Vue  
+
+
+
+<template>
+  <div class="api-list">
+    <h1>Item List</h1>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in items" :key="item.id">
+          <td>{{ item.id }}</td>
+          <td>{{ item.title }}</td>
+          <td>
+            <button @click="viewDetails(item.id)">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error }}</div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      items: [],
+      loading: false,
+      error: null
+    };
+  },
+  mounted() {
+    this.fetchItems();
+  },
+  methods: {
+    async fetchItems() {
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        this.items = response.data;
+      } catch (err) {
+        this.error = 'Error fetching items';
+      } finally {
+        this.loading = false;
+      }
+    },
+    // Navigate to the ItemDetail page with the item ID
+    viewDetails(id) {
+      this.$router.push({ name: 'ItemDetail', params: { id } });
+    }
+  }
+};
+</script>
+
+<style scoped>
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+</style>
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Completed Assignment file  >>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+

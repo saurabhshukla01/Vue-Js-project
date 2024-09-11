@@ -382,7 +382,153 @@ export default {
     padding: 5px;
 }
 </style>
+
+
+some backtick function used after you can check with inline css & js code based on the same code like wise ...
+
+<template>
+    <div>
+        <h1 class="homePage">Home component</h1>  <!-- This is class style is below its working -->
+        <h1 v-bind:style="{color:'red'}"> Style Binding With Object </h1>  <!-- This is style is its working like inline css -->
+        <h1 v-bind:class="{display:show}"> Class Binding With Object </h1>  <!-- This is style is its working like inline css based on script code if pass data as true then display otherwise no display css -->
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'HomePage',
+    data(){
+        return {
+           show:true
+        }
+    }
+};
+</script>
+<style scoped>
+.homePage{
+    color:green;
+}
+.display{
+    color:yellow;
+    background-color:gray;
+}
+</style>
+
+
+based on inline direct apply with JS.
+
+<template>
+    <div>
+        <h1 class="homePage">Home component</h1>  <!-- This is class style is below its working -->
+        <h1 v-bind:style="{color:'red'}"> Style Binding With Object </h1>  <!-- This is style is its working like inline css -->
+        <h1 v-bind:style="{color:colorKey}"> Style Binding With Object Replaced Direct Variable In Script</h1>  <!-- This is style is its working like inline css based on script components-->
+        <h1 v-bind:class="{display:show}"> Class Binding With Object </h1>  <!-- This is style is its working like inline css based on script code if pass data as true then display otherwise no display css -->
+        <h1 v-bind:class="[aClass]"> Class Binding With Array </h1>  <!-- This is style is its working like inline css based on script code if pass data as true then display otherwise no display css while pass array code -->
+        <h1 v-bind:class="[show ? 'YesShow' : 'NoShow']"> Class Binding With Ternary Condition </h1>  <!-- using ternary condition   -->
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'HomePage',
+    data(){
+        return {
+           show:true,
+           aClass:'arrayClass',
+           colorKey:"orange",
+        }
+    }
+};
+</script>
+<style scoped>
+.homePage{
+    color:green;
+}
+.display{
+    color:yellow;
+    background-color:gray;
+}
+.arrayClass {
+    background-color: cyan;
+}
+</style>
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Data binding in Vue.Js   >>>
+
+Data binding >>  which data i am write in DOM then its refelect in vue Js & Js code in few seconds.  ( view & model sync in one file this is Data binding ) .
+
+databinding I am create one Input box and backtick function used 
+
+v-model="message"
+
+its is over right or replace input value to text in paragraph , then you can check and verify.
+
+Code Ex >>
+
+DataBind.vue  >>>
+
+<template>
+    <div>
+        <h1>Data Binding in Vue Js</h1>
+        <p>{{ message }}</p>
+        <input name="message" type="text" v-model="message">
+    </div>
+</template>
+<script>
+export default {
+    name:'DataBind',
+    data(){
+        return {
+            message:"Hi Saurabh How are you !!",
+        }
+    }
+}
+</script>
+
+Note :  Html is view part & inside script model part both are combined in same file this is Data-binding .
+
+ If you got multiple line read ...
+
+
+<template>
+    <div>
+        <h1>Data Binding in Vue Js</h1>
+        <!-- for single line read -->
+        <h5>Single Line Bonding in Vue Js</h5>
+        <p>{{ message }}</p>
+        <input name="message" type="text" v-model="message">
+        <!-- for multiple line read -->
+        <h5>Multi Line Bonding in Vue Js</h5>
+        <p style="white-space: pre-line">{{ multiMessage }}</p>
+        <textarea name="multiMessage" type="text" v-model="multiMessage"></textarea>
+    </div>
+</template>
+<script>
+export default {
+    name:'DataBind',
+    data(){
+        return {
+            message:"Hi Saurabh How are you !!",
+            multiMessage:"Hi How you are",
+        }
+    }
+}
+</script>
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
 
 
 

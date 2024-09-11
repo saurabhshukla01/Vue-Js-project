@@ -1,0 +1,20 @@
+vue >  2
+php > 7.2
+
+Need to learn & create Program in the same ....
+
+# parent to child connectivity for vue js
+# child to parent
+# how to make reactive child passing data from parent
+# lifeCycle in vue Js
+# which lifeCycle is used when Dom is called 
+# how to pass data from child to parent in lifeCycle method
+# how to find function is called vue Js
+# what is watch & how to use watch 
+# what is computed & how to use it
+# between computed & methods
+# find , filter , foreach , map method in JS 
+# mixin methods in vue
+# proto types
+
+

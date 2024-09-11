@@ -15,7 +15,7 @@
           <td>{{ item.id }}</td>
           <td>{{ item.title }}</td>
           <td>
-            <button @click="viewDetails(item.id)">View Details</button>
+            <button @click="viewDetails(item.id)">View Details</button>  
           </td>
         </tr>
       </tbody>

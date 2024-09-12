@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <h2>From with Login Page in Vue.js</h2>
-    <Login/>
+    <h2>From with checkbox radio button in Vue.js</h2>
+    <SingUp/>
   </div>
 </template>
 
 <script>
-import Login from './components/Login.vue'
+import SingUp from './components/Signup.vue';
 export default {
   name: 'App',
   components: {
-    Login,
+    SingUp,
   }
 };
 </script>

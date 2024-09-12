@@ -499,6 +499,83 @@ validation completed for vue js ..
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Filters  in vue Js  >>>
+
+Main.js >>>
+
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// Create the Vue app instance
+const app = createApp(App)
+
+// Define the global "filter-like" function
+app.config.globalProperties.$filters = {
+  capitalize(val) {
+    if (!val) return ''
+    return val.toString().toUpperCase();
+  }
+}
+
+// Mount the app
+app.mount('#app')
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Filters in Vue.js</h2>
+    <p>{{$filters.capitalize(name)}}</p>
+    <Home/>
+  </div>
+</template>
+
+<script>
+import Home from './components/Home.vue'
+export default {
+  name: 'App',
+  components: {
+    Home,
+  },    
+  data(){
+    return {
+        name:"Saurabh Shukla",
+    }
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+Home.js  >>>
+
+<template>
+    <div>
+      <!-- Using the global filter-like function -->
+      <p>{{ $filters.capitalize("hello world") }}</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name:"homePage",
+  }
+  </script>
+  
+
+use global filter function in main.js file after you call any where.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 

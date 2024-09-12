@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <h2>From with checkbox radio button in Vue.js</h2>
-    <SingUp/>
+    <h2>Life Cycle method in Vue.js</h2>
+    <Child />
   </div>
 </template>
 
 <script>
-import SingUp from './components/Signup.vue';
+import Child from './components/Child.vue';
 export default {
   name: 'App',
   components: {
-    SingUp,
+    Child,
   }
 };
 </script>

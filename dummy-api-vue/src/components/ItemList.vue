@@ -1,6 +1,10 @@
 <template>
   <div class="api-list">
     <h1>Item List</h1>
+    <!-- Back to User List button -->
+    <router-link to="/users" class="back-button">Go to User List</router-link><br/><br/>
+    <!-- Back to Todo List button -->
+    <router-link to="/todo" class="back-button">Go to Todo List</router-link>
 
     <table border="1">
       <thead>

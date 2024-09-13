@@ -1,7 +1,7 @@
 Vue.Js Setup Part 2 :	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-links :  https://www.youtube.com/watch?v=YdQArrf3zLY&list=PL8p2I9GklV45qwTH-mdzllUuFRJO-euYn&index=13
+links :  https://www.youtube.com/watch?v=MQZ4PQGw-sc&list=PL8p2I9GklV45qwTH-mdzllUuFRJO-euYn&index=13
 
 >>>>  props in vue js  >>>
 
@@ -579,8 +579,8 @@ use global filter function in main.js file after you call any where.
 
 beforecreate and created life cycle methods  >>>>
 
-⦁	when component is load on screen then beforecreate hook is called .
-⦁	when observe data & call event then created hook is called.
+when component is load on screen then beforecreate hook is called .
+when observe data & call event then created hook is called.
 
 when beforeCreated hook called mean while component is not created.
 when load component then created hook is working accordinglly.
@@ -658,6 +658,131 @@ Home.vue  >>>
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+beforeDestroy and destroyed life cycle methods   >>>>
+
+Before Dom is Destroy then beforeDestroy  hooks is works.
+after Dom is Destroy then Destroy  hooks is works
+
+Ex..
+
+App.vue >>>
+
+<template>
+  <div id="app">
+    <h2>beforeDestroy and destroyed life cycle methods</h2>
+    <div v-if="display">
+      <Home/>
+    </div>
+    <button @click="toggle">Toggle</button>
+  </div>
+</template>
+
+<script>
+import Home from './components/Home.vue'
+export default {
+  name: 'App',
+  components: {
+    Home,
+  },
+  data(){
+    return {display:true};
+  },
+  methods:{
+    toggle(){
+      this.display=!this.display;
+    }
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+Home.vue  >>>>
+
+<template>
+    <div>
+      <h3>Home</h3>
+      <p>{{ name }}</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name:"homePage",
+    data(){
+      return{
+        name:"Saurabh Shukla"
+      }
+    },
+    // old vue 2 function hooks
+    // beforeDestroy()
+    // {
+    //   // its not display because its when before Dom Removed
+    //   console.log("before destroy");  
+    // },
+    // destroyed() 
+    // {
+    //   // its display because after Dom Removed
+    //   console.log("destroyed");   
+    // }
+
+    // new vue 3 function hooks
+    beforeUnmount() {
+      // Logic before component is unmounted
+      console.log("before Unmount");  
+    },
+    unmounted() {
+      // Logic after component is unmounted
+      console.log("before Unmounted");  
+    }
+  }
+  </script>
+  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+now using v-if="toggle"  then on get condition is correct id data after send data & method while on click button then its then its show hide & show.
+
+Now use beforeDestroy & Destroyed  hooks code >>>
+
+Old Vue 2 Code (using beforeDestroy and destroyed):  >>>>>
+
+export default {
+  beforeDestroy() {
+    // Logic before component is destroyed
+  },
+  destroyed() {
+    // Logic after component is destroyed
+  }
+}
+
+
+Updated Vue 3 Code (using beforeUnmount and unmounted):    >>>>
+
+export default {
+  beforeUnmount() {
+    // Logic before component is unmounted
+  },
+  unmounted() {
+    // Logic after component is unmounted
+  }
+}
+
+
+both working as same in vue 2 to vue3 only function hooks name is changed.
+ 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 

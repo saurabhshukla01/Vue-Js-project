@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <h2>beforeDestroy and destroyed life cycle methods</h2>
-    <div v-if="display">
-      <Home/>
-    </div>
-    <button @click="toggle">Toggle</button>
+    <h2>fetch data from API | axios</h2>
+<Home/>
   </div>
 </template>
 
@@ -14,14 +11,6 @@ export default {
   name: 'App',
   components: {
     Home,
-  },
-  data(){
-    return {display:true};
-  },
-  methods:{
-    toggle(){
-      this.display=!this.display;
-    }
   }
 };
 </script>

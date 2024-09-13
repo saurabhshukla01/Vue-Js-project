@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <h2>Filters in Vue.js</h2>
-    <p>{{$filters.capitalize(name)}}</p>
+    <h2>BeforeMount and mounted life cycle hooks in Vue Js</h2>
     <Home/>
   </div>
 </template>
@@ -12,11 +11,6 @@ export default {
   name: 'App',
   components: {
     Home,
-  },    
-  data(){
-    return {
-        name:"Saurabh Shukla",
-    }
   }
 };
 </script>

@@ -577,6 +577,86 @@ use global filter function in main.js file after you call any where.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+beforecreate and created life cycle methods  >>>>
+
+⦁	when component is load on screen then beforecreate hook is called .
+⦁	when observe data & call event then created hook is called.
+
+when beforeCreated hook called mean while component is not created.
+when load component then created hook is working accordinglly.
+
+
+code like this >>>
+
+Home.vue  >>
+
+<template>
+    <div>
+      <h3>Home</h3>
+      <p>{{ name }}</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name:"homePage",
+    data(){
+      return{
+        name:"Saurabh Shukla"
+      }
+    },
+    beforeCreate(){
+      // this.name = "Sam";   // but its not display because its when data is not loaded then display.
+      console.log("before create",this.name);
+    }
+    ,created(){
+      this.name = "Sam";  // it is display because when data is render first after created is hook is called then show created property it is overwrite the data property value.
+      console.log("created",this.name);
+    }
+  }
+  </script>
+  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+beforeMount & mounted hooks life cycle in vue >>>>
+
+beforeMount  >>>  before html is render then before mount hooks.
+
+mounted  >>>  after render html then called mounted hooks.
+
+
+Home.vue  >>>
+
+<template>
+    <div>
+      <h3>Home</h3>
+      <p>{{ name }}</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name:"homePage",
+    data(){
+      return{
+        name:"Saurabh Shukla"
+      }
+    },
+    beforeMount(){
+      // its not display because its when before Html render
+      console.log("before mounted",this.$el);  // el means ( html element define )
+    },
+    mounted(){
+      // its display because its when Html render
+      console.log("mounted",this.$el);   // el means ( html element define )
+    }
+  }
+  </script>
+  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 
 

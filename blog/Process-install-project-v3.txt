@@ -113,4 +113,90 @@ now we are use axios lib and fetch data & complete to fetch data & show on table
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+add bootstrap  >>>>   ( link is ...   https://bootstrap-vue.org/docs/components  )
+
+docs link >>>>   https://bootstrap-vue.org/
+
+install one package .....
+
+# vue add bootstrap-vue  ( not working in vue 3 )
+
+
+Now i am using bootstrap via npm  >>>>
+
+Step 1: Create a New Vue 3 Project
+First, create a new Vue 3 project if you don’t have one:
+
+# vue create my-vue-app
+
+Navigate to the project directory:
+
+# cd my-vue-app
+
+Step 2: Install BootstrapVue 3 and Bootstrap 5
+Run the following command to install BootstrapVue 3 and Bootstrap 5:
+
+# npm install bootstrap@5 bootstrap-vue-3
+
+Step 3: Add Bootstrap and BootstrapVue to main.js
+After installing the necessary packages, you need to import Bootstrap CSS, BootstrapVue 3, and optionally the BootstrapVue icons in your main.js file.
+
+Edit src/main.js:
+
+import { createApp } from 'vue';
+import App from './App.vue';
+
+// Import Bootstrap and BootstrapVue 3 CSS files
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
+
+// Import BootstrapVue 3
+import BootstrapVue3 from 'bootstrap-vue-3';
+
+const app = createApp(App);
+
+app.use(BootstrapVue3); // Use BootstrapVue 3 globally
+
+app.mount('#app');
+
+Use Bootstrap Components in Vue
+Now, you can use BootstrapVue components in your Vue 3 app. For example, you can use a Bootstrap button or card component like this:
+
+Home.vue >>>>
+
+<template>
+  <div class="container mt-4">
+    <b-button variant="primary" @click="sayHello">Click Me</b-button>
+    <b-card
+      title="BootstrapVue 3 Card"
+      class="mt-4"
+    >
+      <p class="card-text">This is a card component from BootstrapVue 3!</p>
+    </b-card>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  methods: {
+    sayHello() {
+      alert('Hello from BootstrapVue 3!');
+    }
+  }
+};
+</script>
+
+
+
+So use this process use bootstrap via npm component..
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Post API with form data   >>>>>
+
+
+
+
+
 

@@ -5,12 +5,13 @@ import UserList from '../components/UserList.vue';
 import UserDetails from '../components/UserDetails.vue';
 import TodoList from '../components/TodoList.vue';
 import TodoDetails from '../components/TodoDetails.vue';
-
+import UserListDelete from '../components/UserListDelete.vue';
 
 const routes = [
   { path: '/', name: 'ItemList', component: ItemList },
   { path: '/item/:id', name: 'ItemDetail', component: ItemDetail },
   { path: '/users', name: 'UserList', component: UserList },
+  { path: '/user-list', name: 'UserListDelete', component: UserListDelete },
   { path: '/user/:id', name: 'UserDetails', component: UserDetails , props: true}, // This will pass the route param 'id' as a prop to the UserDetails component
   { path: '/todo', name: 'TodoList', component: TodoList },
   { path: '/todo/:id', name: 'TodoDetails', component: TodoDetails , props: true}, // This will pass the route param 'id' as a prop to the TodoDetails component

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>fetch data from API | axios</h2>
+    <h2>Post Form & Submit Data using API Call in vue</h2>
 <Home/>
   </div>
 </template>

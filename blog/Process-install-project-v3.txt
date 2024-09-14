@@ -455,3 +455,176 @@ export default {
 while click on delete button then function run delete users .
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Basic Routing | Vue router part 1   >>>>>
+
+install package for router in vue Js ...
+
+# npm install vue-router
+
+create two component about & home then load code ..
+
+after install write some code  in main.js file   >>>>
+
+Main.js  >>>
+
+// Import Vue and App component
+import { createApp } from 'vue';
+import App from './App.vue';
+
+// Import Bootstrap and BootstrapVue 3 CSS files
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
+
+// Import BootstrapVue 3
+import BootstrapVue3 from 'bootstrap-vue-3';
+
+// Import Vue Router and necessary methods from vue-router
+import { createRouter, createWebHistory } from 'vue-router';
+
+// Import the components for routing
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+
+// Define the routes
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+];
+
+// Create the router instance
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+// Create the Vue app instance
+const app = createApp(App);
+
+// Use BootstrapVue 3 globally
+app.use(BootstrapVue3);
+
+// Use Vue Router globally
+app.use(router);
+
+// Define the global "filter-like" function (for example: capitalize)
+app.config.globalProperties.$filters = {
+  capitalize(val) {
+    if (!val) return '';
+    return val.toString().toUpperCase();
+  },
+};
+
+// Mount the app to the #app element
+app.mount('#app');
+
+
+-----------------------------------------------------------------------------------------------
+
+add router-view in app.vue page  >>>
+
+when url hit then load component based on url its clear ...
+
+<template>
+  <div id="app">
+    <h2>Vue Router how to handle</h2>
+    <!-- this is add for link based component load then use router-view open and close both -->
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  components: {
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+Home.vue  >>>>
+
+<template>
+    <div>
+        <h3>Home Page</h3>
+    </div>
+</template>
+<script>
+export default {
+    name:"homePage",
+}
+</script>
+
+About.vue  >>>>
+
+<template>
+    <div>
+        <h3>About Page</h3>
+    </div>
+</template>
+<script>
+export default {
+    name:"aboutPage",
+}
+</script>
+
+
+now its working vue routes load based over components..
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Add Routing Link | vue router part 2     >>>>>>
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Vue Router how to handle</h2>
+    <!-- Router link based on href like wise in vue js i am use router-link -->
+    <ul>
+      <ol><router-link to="/">Home</router-link></ol>
+      <ol><router-link to="/about">About</router-link></ol>
+    </ul>
+    
+    <!-- this is add for link based component load then use router-view open and close both -->
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  components: {
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+Its working fine  <router-link to="/">Home</router-link>  works as href or any click link so its getting data to easy way.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

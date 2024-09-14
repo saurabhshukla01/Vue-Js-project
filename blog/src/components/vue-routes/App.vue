@@ -1,12 +1,6 @@
 <template>
   <div id="app">
     <h2>Vue Router how to handle</h2>
-    <!-- Router link based on href like wise in vue js i am use router-link -->
-    <ul>
-      <ol><router-link to="/">Home</router-link></ol>
-      <ol><router-link to="/about">About</router-link></ol>
-    </ul>
-    
     <!-- this is add for link based component load then use router-view open and close both -->
     <router-view></router-view>
   </div>

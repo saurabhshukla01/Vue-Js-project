@@ -173,7 +173,151 @@ default data function need to load & after update component then its works .
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-make custom directive    >>>>
+make custom directive   >>>>
+
+App.vue >>>
+
+<template>
+  <div id="app">
+    <h2>Directive Component</h2>
+    <!-- Corrected component usage -->
+    <DirectivePage />
+  </div>
+</template>
+
+<script>
+// Correct import for renamed component
+import DirectivePage from './components/DirectivePage.vue';
+
+export default {
+  name: 'App',
+  components: {
+    DirectivePage // Registered as DirectivePage
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+DirectivePage.vue  >>>
+
+
+  <template>
+    <div>
+      <h3>Custom Directive Example</h3>
+      <!-- Add content here related to the directive -->
+      <h1 v-color="'red'">This text will be red!</h1>
+      <p v-color="'blue'">This text will be blue!</p>
+      <!-- focus directive input text -->
+      <input v-focus.log type="text" placeholder="This input will be focused" />
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'DirectivePage' // Multi-word name
+  };
+  </script>
+  
+
+Main.js   >>>
+
+// Import Vue and App component
+import { createApp } from 'vue';
+import App from './App.vue';
+
+// Import Bootstrap and BootstrapVue 3 CSS files
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
+
+// Import BootstrapVue 3
+import BootstrapVue3 from 'bootstrap-vue-3';
+
+// Import Vue Router and necessary methods from vue-router
+import { createRouter, createWebHistory } from 'vue-router';
+
+// Import the components for routing
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+import Login from './components/Login.vue';
+import User from './components/User.vue';
+import PageNotFound from './components/PageNotFound.vue';
+
+// Define the routes
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/login', component: Login },
+  { path: '/user/:id', component: User },
+  // { path: '*', component: PageNotFound },  // not used its use in vue 2 not this * is not exits
+  { path: '/:pathMatch(.*)*', component: PageNotFound }, // Catch-all for 404 Page Not Found
+];
+
+
+// Create the router instance
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+// Create the Vue app instance
+const app = createApp(App);
+
+// Use BootstrapVue 3 globally
+app.use(BootstrapVue3);
+
+// Use Vue Router globally
+app.use(router);
+
+
+// Custom directive 'v-color'
+app.directive('color', {
+  // This will be called when the directive is mounted on the element
+  mounted(el, binding) {
+    el.style.color = binding.value; // Set the element's color to the directive's value
+  }
+});
+
+// Custom directive 'focus'
+app.directive('focus', {
+  mounted(el, binding) {
+    // Focus the element
+    if (binding.modifiers.log) {
+      console.log("Element is being focused!");
+    }
+    el.focus();
+  }
+});
+
+
+// Define the global "filter-like" function (for example: capitalize)
+app.config.globalProperties.$filters = {
+  capitalize(val) {
+    if (!val) return '';
+    return val.toString().toUpperCase();
+  },
+};
+
+// Mount the app to the #app element
+app.mount('#app');
+
+
+
+I create custom directive function in main.js file and create component using v-color or v-focus like this is custom directive in vue .
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 

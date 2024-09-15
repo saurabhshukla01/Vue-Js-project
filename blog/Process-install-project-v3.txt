@@ -628,3 +628,182 @@ Its working fine  <router-link to="/">Home</router-link>  works as href or any c
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Pass data in routing params | Vue router part 3   >>>>
+
+Home.vue   >>>>
+
+<template>
+  <div class="user-list-container">
+    <h2>Home List</h2>
+    <p><router-link to="user/1">Saurabh</router-link></p>
+    <p><router-link to="user/2">Rishabh</router-link></p>
+    <p><router-link to="user/3">Vimal</router-link></p>
+    <p><router-link to="user/4">Mukesh</router-link></p>
+  </div>
+</template>
+
+<script>
+export default {
+  name:"homePage",
+  data() {
+    return {};
+  }
+};
+</script>
+
+<style scoped>
+</style>
+
+
+About.vue   >>>>
+
+<template>
+    <div>
+        <h3>About Page</h3>
+    </div>
+</template>
+<script>
+export default {
+    name:"aboutPage",
+}
+</script>
+
+
+Login.vue   >>>>
+
+<template>
+    <div>
+        <h3>Login Page</h3>
+    </div>
+</template>
+<script>
+export default {
+    name:"loginPage",
+}
+</script>
+
+User.vue   >>>>>
+
+<template>
+    <div>
+        <h2>User View Page</h2>
+        <h4>User Id is: {{ userId }}</h4>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "userPage",
+    data() {
+        return {
+            userId: this.$route.params.id // Corrected from param to params
+        };
+    }
+}
+</script>
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Pass data in routing params | Vue router part 3</h2>
+    <!-- Router link based on href like wise in vue js i am use router-link -->
+    <ul>
+      <ol><router-link to="/">Home</router-link></ol>
+      <ol><router-link to="/about">About</router-link></ol>
+      <ol><router-link to="/login">Login</router-link></ol>
+      <ol><router-link to="/user/:id">User View</router-link></ol>
+    </ul>
+    
+    <!-- this is add for link based component load then use router-view open and close both -->
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  components: {
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+Main.vue  >>>>
+
+
+// Import Vue and App component
+import { createApp } from 'vue';
+import App from './App.vue';
+
+// Import Bootstrap and BootstrapVue 3 CSS files
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
+
+// Import BootstrapVue 3
+import BootstrapVue3 from 'bootstrap-vue-3';
+
+// Import Vue Router and necessary methods from vue-router
+import { createRouter, createWebHistory } from 'vue-router';
+
+// Import the components for routing
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+import Login from './components/Login.vue';
+import User from './components/User.vue';
+
+// Define the routes
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/login', component: Login },
+  { path: '/user/:id', component: User },
+];
+
+
+// Create the router instance
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+// Create the Vue app instance
+const app = createApp(App);
+
+// Use BootstrapVue 3 globally
+app.use(BootstrapVue3);
+
+// Use Vue Router globally
+app.use(router);
+
+// Define the global "filter-like" function (for example: capitalize)
+app.config.globalProperties.$filters = {
+  capitalize(val) {
+    if (!val) return '';
+    return val.toString().toUpperCase();
+  },
+};
+
+// Mount the app to the #app element
+app.mount('#app');
+
+
+
+update this code we can manage route param via api or web url ..
+
+
+
+
+

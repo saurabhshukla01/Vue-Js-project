@@ -319,5 +319,112 @@ I create custom directive function in main.js file and create component using v-
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+Non-Props Data    >>>>
+
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Non Props Data</h2>
+    <!-- Corrected component usage -->
+    <SignIn />
+  </div>
+</template>
+
+<script>
+// Correct import for renamed component
+import SignIn from './components/SignIn.vue';
+
+export default {
+  name: 'App',
+  components: {
+    SignIn // Registered as SignIn
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+SignIn.vue   >>>>
+
+<template>
+    <div>
+        <ChildProps data="Some Props data" id="non-props-data" />
+        <!--  id="non-props-data"  this is non props data because i am not define in child as props object like data or something so its is non props data ( but one thing if i use non props then child have one element tag inside all tags are present then its works )-->
+        <!--  data="Some Props data"  this is props data because i am define in child as props object like data as String then its works as a props -->
+    </div>
+</template>
+<script>
+import ChildProps from './ChildProps.vue';
+
+export default {
+    name:"SingIn",
+    components:{
+        ChildProps
+    }
+}
+</script>
+
+ChildProps.vue  >>>>
+
+<template>
+    <!-- <div>
+        <p>John</p>
+        <p>Mohan</p>
+        <p>Vivek</p>
+        <p>{{ data }}</p>
+    </div> -->
+
+    <!--  if i remove div here then we can you attar form single tag value like wise -->
+    <p v-bind="$attrs">John</p>     <!--  for access non props data then we can use  -->
+    <!--  if access non props data if parent div not i have then we can use attributes -->
+    <p>Mohan</p>
+    <p>Vivek</p>
+    <p>{{ data }}</p>
+</template>
+<script>
+export default {
+    name:"ChildProps",
+    inheritAttrs:false,   // its use one call one time not use inside same id for non props data 
+    props:{
+        data:String     // for access props data 
+    }
+}
+</script>
+
+
+
+props data use then child component pass 
+
+props:{
+        data:String     // for access props data 
+    }
+
+
+non props data use then chid component pass 
+
+if parent div or tag present then no need to call any directive or function automatically called .
+
+if not parent then you need to call single on single tag then we can use 
+
+
+    <p v-bind="$attrs">John</p>
+
+this function ..
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+27 Computed Property   >>>>
 
 

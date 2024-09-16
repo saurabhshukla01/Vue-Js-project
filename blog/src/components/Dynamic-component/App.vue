@@ -1,31 +1,30 @@
 <template>
   <div id="app">
     <h2>Dynamic Component</h2>
-    <!-- when i am use dynamic component then not use this other way in next lines -->
-    <!-- <signin />
-    <signup /> -->
-    <component v-bind:is="cmp"></component>
-    <button @click="updatecmp('signin')">Load SignIn</button>
-    <button @click="updatecmp('signup')">Load SignUp</button>
+    <!-- Corrected component usage -->
+    <button @click="tag='Php'">Load PHP</button>
+    <button @click="tag='Java'">Load Java</button>
+    <button @click="tag='Node'">Load Node</button>
+    <component :is="tag"></component>
+    <!-- <Php />
+    <Java />
+    <Node /> -->
   </div>
 </template>
 
 <script>
-import SignIn from './components/SignIn.vue';
-import SignUp from './components/SignUp.vue';
+// Correct import for renamed component
+import Php from './components/Php.vue';
+import Java from './components/Java.vue';
+import Node from './components/Node.vue';
+
 export default {
   name: 'App',
   components: {
-    'signin':SignIn,
-    'signup':SignUp,
+    Php,Java,Node // Registered as dynamic component
   },
   data(){
-    return {cmp:null}
-  },
-  methods:{
-    updatecmp(item){
-      this.cmp = item;
-    }
+    return {tag:"Java"}
   }
 };
 </script>

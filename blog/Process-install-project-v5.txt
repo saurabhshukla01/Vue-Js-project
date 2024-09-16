@@ -1,3 +1,48 @@
+Vue.Js Setup Part 5 :	
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+links :https://www.youtube.com/watch?v=qZPww-JWcik&list=PL8p2I9GklV45qwTH-mdzllUuFRJO-euYn&index=37
+
+
+Dynamic Component  >>>
+
+Create dynamic components    >>>
+
+Java.vue   >>>>
+
+<template>
+    <h3>Java Content</h3>
+</template>
+<script>
+export default {
+    name:"JavaComponent",
+}
+</script>
+
+Php.vue    >>>
+
+<template>
+    <h3>PHP Content</h3>
+</template>
+<script>
+export default {
+    name:"PhpComponent",
+}
+</script>
+
+Node.vue   >>>>>
+
+<template>
+    <h3>Node Content</h3>
+</template>
+<script>
+export default {
+    name:"NodeComponent",
+}
+</script>
+
+App.vue   >>>>
+
 <template>
   <div id="app">
     <h2>Dynamic Component</h2>
@@ -39,3 +84,11 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+
+write all logic how to load button click component is loaded to easy way.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+

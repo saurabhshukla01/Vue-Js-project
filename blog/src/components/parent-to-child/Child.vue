@@ -8,7 +8,7 @@
   <script>
   export default {
     name:"ChildPage",
-    props: ['name']
+    props: ['name'],
   };
   </script>
   

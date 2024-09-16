@@ -17,6 +17,14 @@ Need to learn & create Program in the same ....
 # mixin methods in vue
 # proto types
 
++++++++++++++++++++++++++++++++++++++++++++++++
+
+#How to handle multiple data type in parent to child & check child is reactive data updation .
+#watch where to use it 
+
+
+
+
 
 
 

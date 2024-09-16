@@ -12,12 +12,14 @@
     <p>Mohan</p>
     <p>Vivek</p>
     <p>{{ data }}</p>
+    <p>{{ name }}</p>
 </template>
 <script>
 export default {
     name:"ChildProps",
     props:{
-        data:String
+        data:String,
+        name:String
     }
 }
 </script>

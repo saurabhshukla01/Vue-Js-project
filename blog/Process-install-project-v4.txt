@@ -427,4 +427,106 @@ this function ..
 
 27 Computed Property   >>>>
 
+Computed Property using like props but when use if calculation is tuf then we can create.
+
+big method use then create computed property.
+
+Ex .
+
+<div id="example">
+{{ message.split(' ').reserve().join(' ') }}
+</div>
+
+
+like wise i am create and use this .
+
+ 
+
+computed property perfomance  is fast , method is slow if you want to create logic then its works.
+
+simple logic then use method & property , if logic has complex then use computed property because its perfomance is to fast rather than method & property .
+
+
+App.vue   >>>>
+
+<template>
+  <div id="app">
+    <h2>Computed Property</h2>
+    <!-- Corrected component usage -->
+    <ComputedComponent />
+  </div>
+</template>
+
+<script>
+// Correct import for renamed component
+import ComputedComponent from './components/computedComponent.vue';
+
+export default {
+  name: 'App',
+  components: {
+    ComputedComponent // Registered as ComputedComponent
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+ComputedComponent .vue  >>>
+
+<template>
+    <div>
+        <h5>Computed Component</h5>
+        <!-- Using direct logic in the template (this can affect performance for complex calculations) -->
+        <p>Logic is Dollar to rupee conversation less discount :  {{ (Dollar * rupeeVal) - discount  }}</p>
+
+        <!-- Using computed property for better performance -->
+        <p> Computed Property Result not need to small Brackets: {{ getResult }}</p>
+
+        <!-- Using method property but computed property is better performance to method  -->
+        <p> Method Property Result need to small Brackets: {{ getResultMethod() }}</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "computedComponent",
+    data() {
+        return {
+            Dollar: 100,
+            rupeeVal: 83.90,
+            discount: 30,
+        };
+    },
+    methods: {
+        // method property to calculate the result
+        getResultMethod() {
+            return (this.Dollar * this.rupeeVal) - this.discount;
+        }
+    },
+    computed: {
+        // Computed property to calculate the result
+        getResult() {
+            return (this.Dollar * this.rupeeVal) - this.discount;
+        }
+    }
+}
+</script>
+
+
+computed property have better performance to method .
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 

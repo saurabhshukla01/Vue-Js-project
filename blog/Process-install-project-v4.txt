@@ -440,7 +440,7 @@ Ex .
 
 like wise i am create and use this .
 
- 
+
 
 computed property perfomance  is fast , method is slow if you want to create logic then its works.
 
@@ -526,6 +526,278 @@ export default {
 computed property have better performance to method .
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Watchers with example   >>>>
+
+all property observed via watchers .
+both function name should be same in property inside function & watchers inside function.
+
+if you want to observe the data or value inside fucntion then i can use watch property .
+
+
+Ex >>>>
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Watchers Components</h2>
+    <!-- Corrected component usage -->
+    <WatchersComponents />
+  </div>
+</template>
+
+<script>
+// Correct import for renamed component
+import WatchersComponents from './components/watchersComponents.vue';
+
+export default {
+  name: 'App',
+  components: {
+    WatchersComponents // Registered as ComputedComponent
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+watcherComponents.vue   >>>>
+
+<template>
+    <div>
+        <h2>Watchers</h2>
+        <h4>{{ count }}</h4>
+        <button @click="count=count+1">+</button>
+        <button @click="count=count-1">-</button>
+    </div>
+</template>
+<script>
+export default {
+    name:"watchersComponents",
+    data(){
+        return {
+            count:0
+        }
+    },
+    watch:{
+        count(val,prev){    // have 2 value first value & old value
+            if(val>5 && val>prev){
+                // when this value goes up to 5 then its reset value 0
+                this.count=0;
+                alert("stop counting");
+            }
+        }
+    }
+}
+</script>
+
+
+
+watch is observe value like higher 5 then its reset count value is 0.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Slots with example     >>>>
+
+Slots component uses for the all type of data pass then we can use this .
+
+you can pass multiple data type using slot tag and send to parent ton child.
+
+App.vue  >>>>
+
+<template>
+  <div id="app">
+    <h2>Slots Components Property in Vue Js</h2>
+    <!-- Corrected component usage -->
+    <SlotsComponent />
+  </div>
+</template>
+
+<script>
+// Correct import for renamed component
+import SlotsComponent from './components/SlotsComponent.vue';
+
+export default {
+  name: 'App',
+  components: {
+    SlotsComponent // Registered as ComputedComponent
+  }
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+
+
+SlotsComponents.vue  >>>>>
+
+
+<template>
+    <div>
+        <h3>Slots Components</h3>
+        <!-- default slot pass -->
+        <SlotsChild></SlotsChild>
+        <SlotsChild><h4>Pass H4 tag in slot value using slot tag</h4></SlotsChild>
+         <!-- href pass slot pass -->
+        <SlotsChild><a href="#google">Google</a></SlotsChild>
+        <!-- image pass slot pass -->
+        <SlotsChild><img src="https://via.placeholder.com/600/92c952" /></SlotsChild>
+        <!-- el ( html code ) pass slot pass -->
+        <SlotsChild><p>Pass paragraph</p></SlotsChild>
+    </div>
+</template>
+<script>
+import SlotsChild from './SlotsChild.vue';
+export default {
+    name:"SlotsComponents",
+    components:{
+        SlotsChild,
+    }
+}
+</script>
+
+SlotsChild.vue  >>>>
+
+<template>
+    <div>
+        <!-- how to pass default value in slots -->
+        <slot>Default Slots</slot>
+        <!-- how to pass all value pass from data components using child components -->
+        <slot></slot>
+    </div>
+</template>
+<script>
+export default {
+    name:"SlotsChild",
+}
+</script>
+
+
+
+You can use multiple data type you pass in child using slot tag...
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Multiple slot with Name Slots    >>>>>
+
+SlotsComponents.vue   >>>>
+
+<template>
+    <div class="card_1">
+       <SlotsChild>
+          <template v-slot:header>
+             <h4>Saurabh Shukla</h4>
+          </template>
+          <template v-slot:main>
+             <p>
+                This is main content for you !!
+             </p>
+          </template>
+          <template v-slot:footer>
+             <h6>
+                @copyright for 2024
+             </h6>
+          </template>
+       </SlotsChild>
+    </div>
+    <div class="card_2">
+       <SlotsChild>
+          <template v-slot:header>
+             <h4>
+                Vijay Shukla
+             </h4>
+          </template>
+          <template v-slot:main>
+             <p>
+                This is main content for vijay !!
+             </p>
+          </template>
+          <template v-slot:footer>
+             <h6>
+                @copyright for 2024
+             </h6>
+          </template>
+       </SlotsChild>
+    </div>
+ </template>
+ <script>
+    import SlotsChild from './SlotsChild.vue';
+    export default {
+        name: "SlotsComponents",
+        components: {
+            SlotsChild,
+        }
+    }
+ </script>
+<style scoped>
+.card_1{
+    padding: 10px;
+    background: blue;
+    color: white;
+    width: 300px;
+    height: 150px;
+    align-content: center;
+}
+.card_2{
+    padding: 10px;
+    background: skyblue;
+    color: blue;
+    width: 300px;
+    height: 150px;
+    align-content: center;
+}
+</style>
+
+SlotsChild.vue   >>>>
+
+<template>
+    <div>
+        <header>
+        <slot name="header"></slot>
+        </header>
+        <content>
+        <slot name="main"></slot>
+        </content>
+        <footer>
+        <slot name="footer"></slot>
+        </footer>
+    </div>
+</template>
+<script>
+export default {
+    name:"SlotsChild",
+}
+</script>
+
+
+
+In this type i can use slot inside child based on her name , because multiple slot access via name inside slot point.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 
 

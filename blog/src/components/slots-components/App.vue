@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Multiple Slots Components with name in Vue Js</h2>
+    <h2>Slots Components Property in Vue Js</h2>
     <!-- Corrected component usage -->
     <SlotsComponent />
   </div>

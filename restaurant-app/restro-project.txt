@@ -1,0 +1,71 @@
+Step 1: Set up the Vue.js Project
+First, create a new Vue project if you haven't already. You can use Vue CLI for this.
+
+# Install Vue CLI if you don't have it
+npm install -g @vue/cli
+
+# Create a new project
+vue create restaurant-app
+
+# Navigate to the project directory
+cd restaurant-app
+
+# Install Vue Router and Vuex for state management
+npm install vue-router vuex
+
+
+Step 2: Set up the Folder Structure
+The following structure gives an organized view of how components, services, and store modules will be used.
+
+
+restaurant-app/
+│
+├── public/
+├── src/
+│   ├── assets/               # Store static assets
+│   ├── components/           # Reusable components
+│       ├── Home.vue          # Home page
+│       ├── AddRestaurant.vue # Add Restaurant page
+│       ├── UpdateRestaurant.vue # Update Restaurant page
+│       ├── Login.vue         # Login page
+│       ├── CreateUser.vue    # Create new user page
+│   ├── router/               # Vue Router
+│       └── index.js          # Route configuration
+│   ├── store/                # Vuex store
+│       └── index.js          # Vuex store configuration
+│   ├── services/             # API services
+│       └── authService.js    # Service for handling authentication
+│   ├── App.vue               # Root component
+│   ├── main.js               # Entry file
+│
+└── package.json
+
+
+
+Step 3: Install Dependencies
+You’ll need a few dependencies for basic functionality like form handling, Vue Router, Vuex, and making API calls.
+
+# npm install axios
+
+
+Step 4: Define API Service
+Create an authService.js inside the services/ folder to handle authentication API calls.
+
+services/authService.js
+
+import axios from 'axios';
+
+const API_URL = 'http://localhost:8000/api'; // Replace with actual backend API URL
+
+export default {
+  login(email, password) {
+    return axios.post(`${API_URL}/login`, { email, password });
+  },
+
+  register(username, email, password) {
+    return axios.post(`${API_URL}/register`, { username, email, password });
+  }
+};
+
+
+

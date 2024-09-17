@@ -1,21 +1,12 @@
 <template>
   <div>
-    <h1>Vue Lifecycle Hooks Multiple Data Example</h1>
-    <ParentComponent />
+    <h1>Add Update Restaurant Page</h1>
   </div>
 </template>
 
 <script>
-import ParentComponent from './components/ParentComponent';
 export default {
   name:'App',
-  components:{
-    ParentComponent,
-  },
-  data() {
-    return {
-    };
-  },
 };
 </script>
 

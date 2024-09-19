@@ -8,7 +8,7 @@
         <input v-model="password" type="password" placeholder="Password" required />
         <input v-model="c_password" type="password" placeholder="Confirm Password" required />
         <select v-model="role_id" required>
-          <option disabled value="">Select Role</option>
+          <option disabled value="Select Role">Select Role</option> <!-- This is the default option -->
           <option value="1">Admin</option>
           <option value="2">Manager</option>
           <option value="3">HR</option>

@@ -1,4 +1,3 @@
-
 <template>
   <div class="user-list">
     <h1>User List</h1>
@@ -21,7 +20,7 @@
           <td class="textCenter">{{ user.role.name }}</td>
           <td class="textCenter">
             <button @click="editUser(user.id)">Edit</button>
-            <button @click="deleteUser(user.id)">Delete</button>
+            <button @click="confirmDelete(user.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -42,13 +41,31 @@ export default {
   },
   methods: {
     ...mapActions(['fetchUsers', 'deleteUser']),
+    
     editUser(id) {
       this.$router.push(`/users/${id}/edit`);
     },
+
     createUser() {
-      this.$router.push('/users/add'); // Adjust the route as necessary
+      this.$router.push('/users/add');
     },
+
+    confirmDelete(userId) {
+      const confirmation = window.confirm('Has a manager approved this deletion?');
+      
+      if (confirmation) {
+        this.deleteUser(userId).then(() => {
+          alert('User deleted successfully.');
+        }).catch(error => {
+          console.error(error);
+          alert('There was an error deleting the user.');
+        });
+      } else {
+        alert('Deletion not approved by manager.');
+      }
+    }
   },
+  
   mounted() {
     this.fetchUsers();
   },
@@ -74,8 +91,9 @@ button {
   margin-right: 5px;
 }
 .textCenter {
-  text-align: center; /* Align buttons to the right */
+  text-align: center;
 }
+
 .create-user-button {
   background-color: #007bff;
   color: #fff;
@@ -84,8 +102,9 @@ button {
   font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 20px; /* Space below the button */
+  margin-bottom: 20px;
 }
+
 .create-user-button:hover {
   background-color: #0056b3;
 }

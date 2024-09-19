@@ -1,3 +1,4 @@
+// store/index.js
 import { createStore } from 'vuex';
 import axios from 'axios';
 
@@ -75,7 +76,7 @@ export default createStore({
         const { data } = await axios.get(`http://127.0.0.1:8000/api/users/${userId}`);
         commit('setUser', data.data);
         commit('setError', null);
-        return data.user; // Return user data for component use
+        return data.data; // Return user data for component use
       } catch (error) {
         commit('setError', error.message || 'Failed to fetch user');
         throw error; // Re-throw error to be handled in component
@@ -92,6 +93,7 @@ export default createStore({
     },
     async updateUser({ dispatch, commit }, { userId, userData }) {
       try {
+        console.log("userId",userId,"userData",userData);
         await axios.put(`http://127.0.0.1:8000/api/users/${userId}`, userData);
         await dispatch('fetchUsers');
         commit('setError', null);

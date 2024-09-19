@@ -1,0 +1,725 @@
+{
+	"info": {
+		"_postman_id": "62acddfe-c99e-4984-9987-91690c29938f",
+		"name": "VueCRMAPIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33160480"
+	},
+	"item": [
+		{
+			"name": "AuthAPIs",
+			"item": [
+				{
+					"name": "Register User API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Om Nath\",\r\n    \"email\": \"om.nath@example.com\",\r\n    \"password\": \"password123\",\r\n    \"c_password\": \"password123\",\r\n    \"role_id\": 1 // Assume role_id 1 is for the Admin , 2 for Manager , 3 for HR , 4 for Employee role\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register User Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Om Nath\",\r\n    \"email\": \"om.nath@example.com\",\r\n    \"password\": \"password123\",\r\n    \"c_password\": \"password123\",\r\n    \"role_id\": 1 // Assume role_id 1 is for the Admin , 2 for Manager , 3 for HR , 4 for Employee role\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 05:18:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"4|TKxYkNkqlhWyuQcgUtpd3jvdMZG1WYQSEZbO4tNk1eda5d50\",\n        \"name\": \"Om Nath\",\n        \"role\": \"Admin\"\n    },\n    \"message\": \"User registered successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login User API",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"om.nath@example.com\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login User Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"om.nath@example.com\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 01:15:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"8|izIQFC8dX0duNoj8KoBVjsVs96xKCwdm2IF1llBqa376b52e\",\n        \"name\": \"Om Nath\",\n        \"email\": \"om.nath@example.com\",\n        \"role\": \"Admin\"\n    },\n    \"message\": \"User logged in successfully.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "UsersAPIs",
+			"item": [
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shree Nath\",\r\n    \"email\": \"shree.nath@example.com\",\r\n    \"password\": \"password123\",\r\n    \"c_password\": \"password123\",\r\n    \"role_id\": 4 // Assume role_id 1 is for the Admin , 2 for Manager , 3 for HR , 4 for Employee role\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add User Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shree Nath\",\r\n    \"email\": \"shree.nath@example.com\",\r\n    \"password\": \"password123\",\r\n    \"c_password\": \"password123\",\r\n    \"role_id\": 4 // Assume role_id 1 is for the Admin , 2 for Manager , 3 for HR , 4 for Employee role\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Sep 2024 09:45:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Shree Nath\",\n        \"email\": \"shree.nath@example.com\",\n        \"role\": {\n            \"id\": 4,\n            \"name\": \"Employee\"\n        },\n        \"created_at\": \"2024-09-18T09:45:07.000000Z\",\n        \"updated_at\": \"2024-09-18T09:45:07.000000Z\"\n    },\n    \"message\": \"User created successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Om Prakash Namo\",\r\n    \"email\": \"om.prakash@example.com\",\r\n    \"role_id\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Om Prakash Namo\",\r\n    \"email\": \"om.prakash@example.com\",\r\n    \"role_id\":4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/9",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 01:14:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Om Prakash Namo\",\n        \"email\": \"om.prakash@example.com\",\n        \"role\": {\n            \"id\": 4,\n            \"name\": \"Employee\"\n        },\n        \"created_at\": \"2024-09-18T13:37:31.000000Z\",\n        \"updated_at\": \"2024-09-19T01:14:32.000000Z\"\n    },\n    \"message\": \"User updated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Show User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show User Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/9",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 01:16:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Om Prakash Namo\",\n        \"email\": \"om.prakash@example.com\",\n        \"role\": {\n            \"id\": 4,\n            \"name\": \"Employee\"\n        },\n        \"created_at\": \"2024-09-18T13:37:31.000000Z\",\n        \"updated_at\": \"2024-09-19T01:14:32.000000Z\"\n    },\n    \"message\": \"User retrieved successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List User Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 01:18:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"John Doe\",\n            \"email\": \"john.doe@example.com\",\n            \"role\": {\n                \"id\": 4,\n                \"name\": \"Employee\"\n            },\n            \"created_at\": \"2024-09-18T05:16:26.000000Z\",\n            \"updated_at\": \"2024-09-18T05:16:26.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Saurabh Shukla\",\n            \"email\": \"saurabh.shukla@example.com\",\n            \"role\": {\n                \"id\": 3,\n                \"name\": \"HR\"\n            },\n            \"created_at\": \"2024-09-18T05:17:04.000000Z\",\n            \"updated_at\": \"2024-09-18T05:17:04.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Rishabh Shukla\",\n            \"email\": \"rishabh.shukla@example.com\",\n            \"role\": {\n                \"id\": 2,\n                \"name\": \"Manager\"\n            },\n            \"created_at\": \"2024-09-18T05:17:42.000000Z\",\n            \"updated_at\": \"2024-09-18T05:17:42.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Om Nath\",\n            \"email\": \"om.nath@example.com\",\n            \"role\": {\n                \"id\": 1,\n                \"name\": \"Admin\"\n            },\n            \"created_at\": \"2024-09-18T05:18:18.000000Z\",\n            \"updated_at\": \"2024-09-18T05:18:18.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Vijay Mohan\",\n            \"email\": \"vijay.mohan@example.com\",\n            \"role\": {\n                \"id\": 4,\n                \"name\": \"Employee\"\n            },\n            \"created_at\": \"2024-09-18T09:38:10.000000Z\",\n            \"updated_at\": \"2024-09-18T09:38:10.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Shree Nath\",\n            \"email\": \"shree.nath@example.com\",\n            \"role\": {\n                \"id\": 4,\n                \"name\": \"Employee\"\n            },\n            \"created_at\": \"2024-09-18T09:45:07.000000Z\",\n            \"updated_at\": \"2024-09-18T09:45:07.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Neem Raj\",\n            \"email\": \"neem.raj@example.com\",\n            \"role\": {\n                \"id\": 4,\n                \"name\": \"Employee\"\n            },\n            \"created_at\": \"2024-09-18T13:36:46.000000Z\",\n            \"updated_at\": \"2024-09-18T13:36:46.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Om Prakash Namo\",\n            \"email\": \"om.prakash@example.com\",\n            \"role\": {\n                \"id\": 4,\n                \"name\": \"Employee\"\n            },\n            \"created_at\": \"2024-09-18T13:37:31.000000Z\",\n            \"updated_at\": \"2024-09-19T01:14:32.000000Z\"\n        }\n    ],\n    \"message\": \"Users retrieved successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/users/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show User Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/9",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 19 Sep 2024 01:16:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 9,\n        \"name\": \"Om Prakash Namo\",\n        \"email\": \"om.prakash@example.com\",\n        \"role\": {\n            \"id\": 4,\n            \"name\": \"Employee\"\n        },\n        \"created_at\": \"2024-09-18T13:37:31.000000Z\",\n        \"updated_at\": \"2024-09-19T01:14:32.000000Z\"\n    },\n    \"message\": \"User retrieved successfully.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

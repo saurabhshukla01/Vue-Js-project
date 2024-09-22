@@ -45,9 +45,12 @@ export default createStore({
     async login({ commit }, credentials) {
       try {
         const { data } = await axios.post('http://127.0.0.1:8000/api/login', credentials);
-        commit('setToken', data.token);
-        commit('setUser', data.data);
+        // Assuming the response contains a token and user data
+        const { token, user } = data.data;
+        commit('setToken', token);  // Store token in Vuex state
+        commit('setUser', user);
         commit('setError', null);
+        return data;
       } catch (error) {
         commit('setError', error.message || 'Login failed');
       }

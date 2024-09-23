@@ -67,12 +67,6 @@ export default {
   },
   
   mounted() {
-    // const token = sessionStorage.getItem('token'); // Fetch token from session storage
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${token}` // Send token in request headers
-    //   }
-    // };
     this.fetchUsers();
   },
 };

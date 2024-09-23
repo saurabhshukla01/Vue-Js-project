@@ -4,7 +4,7 @@
       <h1>Edit User</h1>
       <form @submit.prevent="handleUpdateUser" class="update-user-form">
         <input v-model="name" type="text" placeholder="Name" required />
-        <input v-model="email" type="email" placeholder="Email" required />
+        <input v-model="email" type="email" placeholder="Email" required readonly />
         <select v-model="role_id" required>
           <option disabled value="">Select Role</option>
           <option v-for="role in roles" :key="role.id" :value="role.id">

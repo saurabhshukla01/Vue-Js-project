@@ -7,7 +7,7 @@
     <p>Your Token: {{ token }}</p>
 
     <!-- Logout Button -->
-    <button @click="logout" class="logout-btn">Logout</button>
+    <!-- <button @click="logout" class="logout-btn">Logout</button> -->
 
     <!-- Role-Based Cards -->
     <div class="cards">

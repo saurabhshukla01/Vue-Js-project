@@ -2,10 +2,16 @@
   <div id="app">
     <nav>
       <ul>
-        <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/register">Register</router-link></li>
-        <li><router-link to="/dashboard">Dashboard</router-link></li>
-        <li><router-link to="/users">User List</router-link></li>
+        <!-- Show Login and Register links when the user is not logged in -->
+        <li v-if="!isLoggedIn"><router-link to="/login">Login</router-link></li>
+        <li v-if="!isLoggedIn"><router-link to="/register">Register</router-link></li>
+
+        <!-- Show Dashboard and User List when the user is logged in -->
+        <li v-if="isLoggedIn"><router-link to="/dashboard">Dashboard</router-link></li>
+        <li v-if="isLoggedIn"><router-link to="/users">User List</router-link></li>
+        
+        <!-- Logout button, visible only if logged in -->
+        <li v-if="isLoggedIn"><button @click="logout">Logout</button></li>
       </ul>
     </nav>
     <!-- Router View to display the routed components -->
@@ -14,10 +20,40 @@
 </template>
 
 <script>
-// import Register from './components/Register.vue';
 export default {
   name: 'App',
-  components:{}
+  data() {
+    return {
+      isLoggedIn: false // Track login status
+    };
+  },
+  created() {
+    this.checkLoginStatus(); // Check login status when component is created
+  },
+  methods: {
+    checkLoginStatus() {
+      // Check if token exists in sessionStorage
+      const token = sessionStorage.getItem('token');
+      this.isLoggedIn = !!token; // Set isLoggedIn to true if token exists
+    },
+    logout() {
+      // Clear the session storage (log out the user)
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+
+      // Update the login status
+      this.isLoggedIn = false;
+
+      // Redirect to the login page
+      this.$router.push('/login');
+    }
+  },
+  watch: {
+    // Watch for route changes to update the login status
+    $route() {
+      this.checkLoginStatus();
+    }
+  }
 };
 </script>
 

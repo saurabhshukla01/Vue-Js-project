@@ -14,10 +14,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('users', UserController::class);
-// // get users routes after auth user logged in 
-// Route::middleware('auth:sanctum')->group( function () {
-//     Route::apiResource('users', UserController::class);
-// });
+// Route::apiResource('users', UserController::class);
+// get users routes after auth user logged in 
+Route::middleware('auth:sanctum')->group( function () {
+    Route::apiResource('users', UserController::class);
+});
 
 

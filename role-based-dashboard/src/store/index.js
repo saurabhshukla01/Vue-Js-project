@@ -66,38 +66,65 @@ export default createStore({
       }
     },
     async fetchUsers({ commit }) {
+      const token = sessionStorage.getItem('token'); // Retrieve token from sessionStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}` // Add Authorization header with Bearer token
+        }
+      };
       try {
-        const { data } = await axios.get('http://127.0.0.1:8000/api/users');
-        commit('setUsers', data.data);
-        commit('setError', null);
+        const { data } = await axios.get('http://127.0.0.1:8000/api/users', config); // Pass config with token in the request
+        commit('setUsers', data.data); // Commit the user data to the store
+        commit('setError', null); // Clear any errors
       } catch (error) {
-        commit('setError', error.message || 'Failed to fetch users');
+        commit('setError', error.message || 'Failed to fetch users'); // Set error in case of failure
       }
-    },
+    },    
     async fetchUserById({ commit }, userId) {
+      const token = sessionStorage.getItem('token'); // Retrieve token from sessionStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}` // Add Authorization header with Bearer token
+        }
+      };
+    
       try {
-        const { data } = await axios.get(`http://127.0.0.1:8000/api/users/${userId}`);
-        commit('setUser', data.data);
-        commit('setError', null);
+        const { data } = await axios.get(`http://127.0.0.1:8000/api/users/${userId}`, config); // Pass config with token in the request
+        commit('setUser', data.data); // Commit the user data to the store
+        commit('setError', null); // Clear any errors
         return data.data; // Return user data for component use
       } catch (error) {
-        commit('setError', error.message || 'Failed to fetch user');
+        commit('setError', error.message || 'Failed to fetch user'); // Set error in case of failure
         throw error; // Re-throw error to be handled in component
       }
-    },
+    },    
     async addUser({ dispatch, commit }, userData) {
+      const token = sessionStorage.getItem('token'); // Retrieve token from sessionStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}` // Add Authorization header with Bearer token
+        }
+      };
+    
       try {
-        await axios.post('http://127.0.0.1:8000/api/users', userData);
-        await dispatch('fetchUsers');
-        commit('setError', null);
+        await axios.post('http://127.0.0.1:8000/api/users', userData, config); // Pass config with token in the request
+        await dispatch('fetchUsers'); // Fetch updated user list after adding
+        commit('setError', null); // Clear any existing errors
       } catch (error) {
-        commit('setError', error.message || 'Failed to add user');
+        commit('setError', error.message || 'Failed to add user'); // Set error in case of failure
       }
-    },
+    },    
     async updateUser({ dispatch, commit }, { userId, userData }) {
+      const token = sessionStorage.getItem('token'); // Retrieve token from sessionStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}` // Add Authorization header with Bearer token
+        }
+      };
+    
       try {
         console.log("userId",userId,"userData",userData);
-        await axios.put(`http://127.0.0.1:8000/api/users/${userId}`, userData);
+        await axios.put(`http://127.0.0.1:8000/api/users/${userId}`, userData ,config); // Pass config with token in the request
         await dispatch('fetchUsers');
         commit('setError', null);
       } catch (error) {
@@ -105,8 +132,15 @@ export default createStore({
       }
     },
     async deleteUser({ dispatch, commit }, userId) {
+      const token = sessionStorage.getItem('token'); // Retrieve token from sessionStorage
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}` // Add Authorization header with Bearer token
+        }
+      };
+
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/users/${userId}`);
+        await axios.delete(`http://127.0.0.1:8000/api/users/${userId}`,config); // Pass config with token in the request
         await dispatch('fetchUsers');
         commit('setError', null);
       } catch (error) {
